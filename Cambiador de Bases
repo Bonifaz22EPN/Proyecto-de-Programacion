@@ -1,0 +1,53 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Feb 25 03:54:17 2024
+
+@author: Wladimir Bonifaz
+"""
+def obtener_caracter_hexadecimal(valor):
+    valor = str(valor)
+    equivalencias = {
+        "10": "a",
+        "11": "b",
+        "12": "c",
+        "13": "d",
+        "14": "e",
+        "15": "f",
+    }
+    if valor in equivalencias:
+        return equivalencias[valor]
+    else:
+        return valor
+
+
+def decimal_a_hexadecimal(decimal):
+    hexadecimal = ""
+    while decimal > 0:
+        residuo = decimal % 16
+        verdadero_caracter = obtener_caracter_hexadecimal(residuo)
+        hexadecimal = verdadero_caracter + hexadecimal
+        decimal = int(decimal / 16)
+    return hexadecimal
+
+
+decimal = int(
+    input("El numero decimal a convertir es: "))
+hexadecimal = decimal_a_hexadecimal(decimal)
+
+
+def binario(decimal):
+	binario = ""
+	while decimal // 2 != 0:
+		binario = str(decimal % 2)+ binario
+		decimal = decimal // 2
+	return str(decimal) + binario 
+numero = int(input("El numero decimal a tranformar es"))
+
+def octal_decimal():
+	numero = int(input('El numero a cambia a octal es:\n'))
+	convertido = oct(numero)[2:]
+	print(f"el numero {numero} es {convertido} en octal")
+
+octal_decimal()
+print(f"El valor comvertido de {decimal} es {hexadecimal} en hexadecimal")
+print(f"el valor del {decimal} es {binario(numero)} en binario")
